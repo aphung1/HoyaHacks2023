@@ -1,5 +1,6 @@
 const express = require('express');
 const users = require("./routes/users");
+const verifyJWT = require('./middleware/verifyJWT');
 
 const cors = require('cors');
 
@@ -30,6 +31,7 @@ app.use('/users', users);
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
 
+app.use(verifyJWT);
 app.get('/', (req, res) => {
     res.json("hello world");
 })
