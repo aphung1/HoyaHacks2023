@@ -1,22 +1,19 @@
 import React from "react";
-import { useRef, useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
-const LOGIN_URL = "/auth";
+import { Link } from "react-router-dom";
+const REGISTER_URL = "/register";
 
-const Login = () => {
+
+const Register = () => {
   const { setAuth } = useContext(AuthContext);
-  const userRef = useRef();
-  const errRef = useRef();
 
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
 
   useEffect(() => {
     setErrMsg("");
@@ -27,7 +24,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        LOGIN_URL,
+        REGISTER_URL,
         JSON.stringify({ user, pwd }),
         {
           headers: {
@@ -37,8 +34,8 @@ const Login = () => {
         }
       );
       console.log("Made the post request");
-      console.log(JSON.stringify(response?.data));
-      const accessToken = response?.data?.accessToken;
+      console.log(JSON.stringify(response.data));
+      const accessToken = response.data.accessToken;
 
       setAuth({ user, pwd, accessToken });
       setUser("");
@@ -54,7 +51,6 @@ const Login = () => {
       } else {
         setErrMsg("Login Failed");
       }
-      errRef.current.focus();
     }
   };
 
@@ -62,18 +58,17 @@ const Login = () => {
     <div>
       {success ? (
         <React.Fragment>
-          <h1>You are logged in!</h1>
+          <h1>You have signed up!</h1>
           <br />
           <p>
-            <a href="#">Go to Home</a>
+          <Link to={'/'}>Go to sign in</Link>
+
           </p>
         </React.Fragment>
       ) : (
         <React.Fragment>
           <p
-            ref={errRef}
             className={errMsg ? "errMsg" : "offscreen"}
-            aria-live="assertive"
           >
             {errMsg}
           </p>
@@ -83,7 +78,6 @@ const Login = () => {
             <input
               type="text"
               id="username"
-              ref={userRef}
               autoComplete="off"
               onChange={(e) => setUser(e.target.value)}
               value={user}
@@ -98,16 +92,12 @@ const Login = () => {
               value={pwd}
               required
             />
-            <button>Sign In</button>
+            <button>Sign Up</button>
           </form>
-          <p>
-            Need an account? <br />
-            <a href="#">Sign Up</a>
-          </p>
         </React.Fragment>
       )}
     </div>
   );
 };
 
-export default Login;
+export default Register;
