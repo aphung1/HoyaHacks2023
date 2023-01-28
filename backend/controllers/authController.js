@@ -1,7 +1,6 @@
 const bycrypt = require('bcrypt');
 
 const handleLogin = async (req, res) => {
-    console.log("I am logging");
     const {user, pwd} = req.body;
 
     if (!user || !pwd) {
@@ -9,7 +8,7 @@ const handleLogin = async (req, res) => {
             'message': 'Username and password are required.'
         });
     }
-    const foundUser = true;
+    const foundUser = false;
     if (!foundUser){
         return res.sendStatus(401);
     }

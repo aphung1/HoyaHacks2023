@@ -9,7 +9,19 @@ const app = express();
 const PORT = process.env.PORT || 80;
 
 // Will need to restrict access in the future, otherwise very vulnerable
-app.use(cors());
+const whitelist = ['http://localhost:3000']
+const corsOptions = {
+    credentials:true,
+    origin: (origin, callback) => {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false}));
 
 app.use(express.json());
