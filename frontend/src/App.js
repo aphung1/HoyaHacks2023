@@ -10,6 +10,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Home />} />
+        <Route path="/form" element={<Form />} />
       </Routes>
     </div>
   );

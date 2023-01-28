@@ -1,5 +1,6 @@
 const express = require('express');
 const users = require("./routes/users");
+const mysql = require('mysql');
 
 const cors = require('cors');
 
@@ -7,6 +8,25 @@ require('dotenv').config()
 const app = express();
 
 const PORT = process.env.PORT || 80;
+
+const db = mysql.createConnection({
+	host:'database-2.cbrdazp1alco.us-east-1.rds.amazonaws.com',
+	port:'3306',
+	user:'admin',
+	password:'passwor',
+	database:"rm_db"
+});
+
+db.connect((err) => {
+    if(err){
+        console.log(err.message);
+        return;
+    }
+    else{
+        console.log("Database connected");
+    }
+});
+
 
 // Will need to restrict access in the future, otherwise very vulnerable
 const whitelist = ['http://localhost:3000']
