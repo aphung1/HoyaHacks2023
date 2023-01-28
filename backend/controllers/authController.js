@@ -8,7 +8,7 @@ const handleLogin = async (req, res) => {
             'message': 'Username and password are required.'
         });
     }
-    const foundUser = false;
+    const foundUser = true;
     if (!foundUser){
         return res.sendStatus(401);
     }
