@@ -81,10 +81,21 @@ export default function Form() {
                     
                     <button
                         
-                        onClick={() => {
+                        onClick={(e) => {
                         if(page === FormTitles.length - 1) {
-                            console.log(formData)
-                            // Send form data here
+                            console.log(JSON.stringify(formData));
+                            e.preventDefault();
+                            fetch('http://localhost:80/users', {
+                                method: 'POST',
+                                // We convert the React state to JSON and send it as the POST body
+                                body: JSON.stringify(formData),
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                  }
+                            }).then(function(response) {
+                                console.log(response)
+                                return response.json();
+                            });
                         } else {
                             setPage((currPage) => currPage + 1)}}
                         }
