@@ -1,0 +1,19 @@
+.Card {
+    position: relative;
+    width: 600px;
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    margin-top: 5%;
+    border-radius: 25px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5)  ; 
+}
+
+.Card h3 {
+    position: absolute;
+    bottom: 0;
+    margin-left: 15px;
+    color: white !important;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5) ;
+}

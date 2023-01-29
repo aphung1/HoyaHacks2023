@@ -135,7 +135,7 @@ export default function PersonalInfo({formData, setFormData}) {
 
         <div class="wrapper">
             <select value={status} onChange={(e) => 
-            {setFormData({...formData, ethnicity: e.target.value});
+            {setFormData({...formData, undergrad: e.target.value=="Undergraduate"? 1 : 0});
             setStatus(e.target.value);}}>
 
                 <option value="Undergraduate">Undergraduate</option>

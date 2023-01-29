@@ -11,6 +11,7 @@ router.get("/", function (req, res) {
 router.post("/", (req, res) => {
     const data = req.body;
     console.log(data);
+    
     // {
     //     name: 'Anna',
     //     age: 0,
@@ -30,7 +31,21 @@ router.post("/", (req, res) => {
     //     clean: '',
     //     photo: ''
     //   }
-})
+});
+
+// Sends a swipe
+router.post("/swipe", (req, res) => {
+    const data = req.body;
+    // {
+    // liker: ksfls@gmail.com,
+    // likee: asjdfks@gmail.com
+    // }
+    
+
+    }
+)
+
+
 
 
 module.exports = router;

@@ -9,18 +9,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {MultiStepProgressBar} from './components/MultiStepProgressBar'
 import { Container, Row, Col } from "react-bootstrap"; 
 import './Form.css'
+import { useNavigate } from 'react-router-dom'
 
 export default function Form() {
 
     const [page, setPage] = useState(0);
-
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
         age: 0,
         email:'',
         major:'',
         location: '',
-        status: '',
+        undergrad: 1,
         ethnicity: '',
         insthandle: '',
         year: '',
@@ -85,7 +86,7 @@ export default function Form() {
                         if(page === FormTitles.length - 1) {
                             console.log(JSON.stringify(formData));
                             e.preventDefault();
-                            fetch('http://localhost:80/users', {
+                            fetch('http://18.204.13.51/users', {
                                 method: 'POST',
                                 // We convert the React state to JSON and send it as the POST body
                                 body: JSON.stringify(formData),
@@ -96,6 +97,7 @@ export default function Form() {
                                 console.log(response)
                                 return response.json();
                             });
+                            navigate("/swipe");
                         } else {
                             setPage((currPage) => currPage + 1)}}
                         }

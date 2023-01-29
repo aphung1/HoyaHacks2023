@@ -1,0 +1,20 @@
+.EmptyCard {
+    position: relative;
+    width: 600px;
+    height: 50vh;
+    background-color: gainsboro;
+    margin: auto;
+    margin-top: 5%;
+    border-radius: 25px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5)  ; 
+    padding: 40px;
+    padding-top: 50px;
+}
+
+.Footer {
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+    margin: auto;
+    margin-top: 20px;
+}
