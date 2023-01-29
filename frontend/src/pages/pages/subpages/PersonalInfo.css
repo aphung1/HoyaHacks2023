@@ -1,0 +1,36 @@
+select {
+    width: 85%;
+    padding: 12px 20px;
+    margin: 50px 0px !important;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 5px 5px lightgrey;
+}
+
+input[type=text], input[type=number] {
+    width: 85%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 5px 5px lightgrey;
+}
+
+.wrapper {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    color: black !important;
+    line-height: 36px !important;
+    width: 85% !important;
+    font-stretch: expanded;
+}

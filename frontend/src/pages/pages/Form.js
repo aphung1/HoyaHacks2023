@@ -1,66 +1,97 @@
 import {useState} from 'react'
+
 import PersonalInfo from './subpages/PersonalInfo'
+import About from './subpages/About'
 import Interests from './subpages/Interests'
 import Photo from './subpages/Photo'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import {MultiStepProgressBar} from './components/MultiStepProgressBar'
+import { Container, Row, Col } from "react-bootstrap"; 
+import './Form.css'
 
 export default function Form() {
 
-    const [page, setPage] = useState(0)
+    const [page, setPage] = useState(0);
+
     const [formData, setFormData] = useState({
+        name: '',
+        age: 0,
         email:'',
-        password:'',
-        confirm:'',
-        fullname:'',
-        gender:'',
-        age:0,
-        ethnicity:'',
         major:'',
-        year:'',
-        in_state:false,
-        study_habit:'',
-        sleeping_habit:'',
-        drugssss:'',
-        interests:'',
-        photo:''
+        location: '',
+        status: '',
+        ethnicity: '',
+        insthandle: '',
+        year: '',
+        gender:'',
+        diet: '',
+        sleep: '',
+        study: '',
+        substance: '',
+        allergies: '',
+        clean: '',
+        photo: ''
     })
 
-    const FormTitles = ["Personal Info", "Interests", "Photos"]
+    const FormTitles = ["Personal Information", "About Me", "Living Habits", "Photos"]
 
     //render out the right page
     const PageDisplay = () => {
-        if (page == 0){
+        if (page === 0){
             return <PersonalInfo formData={formData} setFormData={setFormData}/>
-        } else if (page == 1) {
+        } else if (page === 1) {
+            return <About formData={formData} setFormData={setFormData}/>
+        } else if(page === 2) {
             return <Interests />
-        } else if(page == 2) {
+        } else if(page === 3) {
             return <Photo />
         }
     }
     return <div className="form">
-            <div className="progressbar"><div style={{width: page === 0 ? "33.3%" : page == 1 ? "66.6%" : "100%"}}></div></div>
+
+            <br></br>
+            
+            <Container className="h-100" >
+                <Row className="h-100">
+                    <Col className='align-self-center'>
+                        <MultiStepProgressBar step={page + 1} />
+                    </Col>
+                </Row>
+            </Container>
+            
+            <br></br>
+            <br></br>
+
             <div className="form-container">
-                <div className="header">
-                    <h1>{FormTitles[page]}</h1>
-                </div>
+                
+                
+                
                 <div className="body">
                     {PageDisplay()}
                 </div>
+                
                 <div className="footer">
+                    
                     <button
-                        disabled={page == 0} 
+                        disabled={page === 0} 
                         onClick={() => {
-                        setPage((currPage) => currPage - 1)}}>
-                            Prev</button>
+                        setPage((currPage) => currPage - 1)}}>Prev
+                    </button>
+                    
                     <button
                         
                         onClick={() => {
                         if(page === FormTitles.length - 1) {
                             console.log(formData)
+                            // Send form data here
                         } else {
                             setPage((currPage) => currPage + 1)}}
                         }
                         
-                    > {page == FormTitles.length - 1 ? "Submit" : "Next" }</button>
+                        > {page === FormTitles.length - 1 ? "Submit" : "Next" }
+                    </button>
+
                 </div>
                 
             </div>

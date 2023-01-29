@@ -1,0 +1,24 @@
+.wrap {
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    fill: none !important;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 30px !important;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    color: black !important;
+    line-height: 36px !important;
+    width: 85% !important;
+    line-height: 36px !important;
+}
